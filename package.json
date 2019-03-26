@@ -1,7 +1,10 @@
 {
-  "name": "x-loader",
+  "name": "@smadey/x-loader",
   "version": "0.1.0",
   "description": "JS/CSS/Assets/Library Loader",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/x-loader.js",
   "scripts": {
     "build": "rollup -c",
