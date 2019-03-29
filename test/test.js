@@ -23,12 +23,22 @@ describe('XLoader Standard Tests', () => {
     })
   })
 
-  it('Load repeat css', () => {
+  it('Load duplicate css', () => {
     const files = repeat(assets.filter(d => d.endsWith('.css')).map(appendRandomQuery))
     return xLoader.css(files, () => {
       files.forEach(assertCSSLoaded)
     }).then(() => {
       files.forEach(assertCSSLoaded)
+    }, (e) => {
+      assert.fail(e)
+    })
+  })
+
+  it('Load empty css', () => {
+    return xLoader.css([], () => {
+      assert.ok(true)
+    }).then(() => {
+      assert.ok(true)
     }, (e) => {
       assert.fail(e)
     })
@@ -45,12 +55,22 @@ describe('XLoader Standard Tests', () => {
     })
   })
 
-  it('Load repeat js', () => {
+  it('Load duplicate js', () => {
     const files = repeat(assets.filter(d => d.endsWith('.js')).map(appendRandomQuery))
     return xLoader.js(files, () => {
       files.forEach(assertJSLoaded)
     }).then(() => {
       files.forEach(assertJSLoaded)
+    }, (e) => {
+      assert.fail(e)
+    })
+  })
+
+  it('Load empty js', () => {
+    return xLoader.js([], () => {
+      assert.ok(true)
+    }).then(() => {
+      assert.ok(true)
     }, (e) => {
       assert.fail(e)
     })

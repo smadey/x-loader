@@ -1,23 +1,22 @@
-import loadJS from 'scriptjs'
-
 import loadCSS from './loadCSS'
+import loadJS from './loadJS'
 
 function loadAssets(assets, cb) {
-  const js = []
   const css = []
+  const js = []
   assets.forEach((asset) => {
-    if (/\.js(\?.*)?$/.test(asset)) {
-      js.push(asset)
-    } else if (/\.css(\?.*)?$/.test(asset)) {
+    if (/\.css(\?.*)?$/.test(asset)) {
       css.push(asset)
+    } else if (/\.js(\?.*)?$/.test(asset)) {
+      js.push(asset)
     }
   })
 
   let len = 2
-  loadJS(js, () => {
+  loadCSS(css, () => {
     --len || cb()
   })
-  loadCSS(css, () => {
+  loadJS(js, () => {
     --len || cb()
   })
 }
@@ -62,8 +61,8 @@ function wrapper(fn, cbIndex) {
 }
 
 export default {
-  js: wrapper(loadJS, 1),
   css: wrapper(loadCSS, 1),
+  js: wrapper(loadJS, 1),
   assets: wrapper(loadAssets, 1),
   lib: wrapper(loadLibrary, 2),
 }
