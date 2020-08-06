@@ -7,13 +7,13 @@ JS/CSS/Assets/Library Loader use:
 
 ## Install
 ```sh
-npm install --save x-loader
+npm install --save @smadey/x-loader
 ```
 
 ## Usage
 
 ```js
-import xLoader from 'x-loader';
+import xLoader from '@smadey/x-loader';
 
 xLoader.css([
   'https://cdn.jsdelivr.net/npm/element-ui@2.4.8/lib/theme-chalk/index.css'
